@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ImageApp</string>
+    <string name="imagefromjson">imageFromJSON</string>
+    <string name="update_success">update success</string>
+</resources>
