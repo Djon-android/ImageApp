@@ -25,8 +25,9 @@ class ImageListActivity : AppCompatActivity() {
 
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
-        var width = displayMetrics.widthPixels
+        val width = displayMetrics.widthPixels
         val isTablet = (displayMetrics.widthPixels / displayMetrics.density).toInt() > 600
+        Log.i("pussy", (displayMetrics.widthPixels / displayMetrics.density).toString())
         var columns = resources.getInteger(R.integer.gallery_columns)
         if (isTablet) {
             columns = 3
@@ -50,13 +51,13 @@ class ImageListActivity : AppCompatActivity() {
         }
         adapter.onClickImageListener = object : ImageAdapter.OnClickImageListener {
             override fun onClickImage(urlImage: String) {
-                var intent = ImageOneActivity.newIntent(this@ImageListActivity, urlImage)
+                val intent = ImageOneActivity.newIntent(this@ImageListActivity, urlImage)
                 startActivity(intent)
             }
 
         }
-        viewModel.liveDataImage.observe(this, Observer {
+        viewModel.liveDataImage.observe(this) {
             adapter.listImage = it
-        })
+        }
     }
 }
